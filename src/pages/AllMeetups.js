@@ -21,7 +21,7 @@ function AllMeetupsPage() {
         for (const key in data) {
           const meetup = {
             id: key,
-            ...data[key],  //...data=spread operator
+            ...data[key],  //...data spread operator
           };
 
           meetups.push(meetup);

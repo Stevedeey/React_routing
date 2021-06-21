@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+
 import classes from "./MainNavigation.module.css";
-// converts all the css ppt u write in the css file into an object
-//which can then be used in the component below
+import FavoritesContext from "../../store/favorites-context";
+
 function MainNavigation() {
+  const favoritesCtx = useContext(FavoritesContext);
+
   return (
     <header className={classes.header}>
-      <div className={classes.logo}>Tosin Logo</div>
+      <div className={classes.logo}>React Meetups</div>
       <nav>
         <ul>
           <li>
@@ -15,7 +19,12 @@ function MainNavigation() {
             <Link to="/new-meetup">Add New Meetup</Link>
           </li>
           <li>
-            <Link to="/favorites">My Favorites</Link>
+            <Link to="/favorites">
+              My Favorites
+              <span className={classes.badge}>
+                {favoritesCtx.totalFavorites}
+              </span>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -24,4 +33,3 @@ function MainNavigation() {
 }
 
 export default MainNavigation;
- 
